@@ -209,8 +209,8 @@ public class Settings {
         forcePermissionJoin = cosmeticSettings.node(FORCE_PERMISSION_JOIN_PATH).getBoolean(false);
         forceShowOnJoin = cosmeticSettings.node(FORCE_SHOW_COSMETICS_PATH).getBoolean(false);
         destroyLooseCosmetics = cosmeticSettings.node(COSMETIC_DESTROY_LOOSE_COSMETIC_PATH).getBoolean(false);
-        backpackForceRidingEnabled = cosmeticSettings.node(COSMETIC_BACKPACK_FORCE_RIDING_PACKET_PATH).getBoolean(false);
-        backpackInterceptPassengerPacket = cosmeticSettings.node(COSMETIC_BACKPACK_INTERCEPT_PASSENGER_PACKET_PATH).getBoolean(true);
+        backpackForceRidingEnabled = cosmeticSettings.node(COSMETIC_BACKPACK_FORCE_RIDING_PACKET_PATH).getBoolean(true);
+        backpackInterceptPassengerPacket = cosmeticSettings.node(COSMETIC_BACKPACK_INTERCEPT_PASSENGER_PACKET_PATH).getBoolean(false);
         preventOffhandSwapping = cosmeticSettings.node(COSMETIC_OFFHAND_PREVENT_SWAPPING).getBoolean(false);
 
         cosmeticSettings.node(SLOT_OPTIONS_PATH).childrenMap().forEach((key, value) -> {

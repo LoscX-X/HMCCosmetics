@@ -87,13 +87,13 @@ public class CosmeticBackpackType extends Cosmetic implements CosmeticUpdateBeha
             }
         }
 
-        // If true, it will send the riding packet to all players. If false, it will send the riding packet only to new players
+        // Send riding packets to all viewers when forced, or when passenger interception is disabled and cannot keep the backpack mounted for us.
         int[] existingPassengers = entity.getPassengers().stream()
                 .mapToInt(Entity::getEntityId)
                 .toArray();
         boolean hasExistingPassengers = existingPassengers.length > 0;
 
-        if (Settings.isBackpackForceRidingEnabled()) {
+        if (Settings.isBackpackForceRidingEnabled() || !Settings.isBackpackInterceptPassengerPacket()) {
             HMCCPacketManager.sendRidingPacket(entity.getEntityId(), firstArmorStandId, entityManager.getViewers());
             if (hasExistingPassengers) HMCCPacketManager.sendRidingPacket(firstArmorStandId, existingPassengers, entityManager.getViewers());
         } else {
