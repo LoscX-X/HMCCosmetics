@@ -54,12 +54,12 @@ cosmetic-settings:
     gamemodes:
       - "SPECTATOR"
 
-  # This make it so it always sends the riding packets for the backpack. This sends more packets but is more reliable for servers which modify player passengers.
+  # This makes it so it always sends the riding packets for the backpack. This sends more packets but is more reliable for servers which modify player passengers.
   backpack-force-riding-packet: true
   # This prevents the backpack from being dark when the player is below a block at the expense of making the backpack bright
   backpack-prevent-darkness: true
-  # Intercepts packets to attempt to reorder them to properly handle the backpack
-  backpack-intercept-passenger-packets: false
+  # Intercepts passenger packets so other passenger updates do not remove the client-side backpack mount.
+  backpack-intercept-passenger-packets: true
 
   slot-options:
     helmet:

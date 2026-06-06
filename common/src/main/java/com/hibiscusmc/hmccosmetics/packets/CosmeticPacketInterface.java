@@ -125,7 +125,7 @@ public class CosmeticPacketInterface implements PacketInterface {
 
     @Override
     public @NotNull PacketAction writePassengerContent(@NotNull Player player, @NotNull PassengerWrapper wrapper) {
-        if (!Settings.isBackpackInterceptPassengerPacket()) return PacketAction.NOTHING;
+        if (!Settings.isBackpackInterceptPassengerPacket() && !Settings.isBackpackForceRidingEnabled()) return PacketAction.NOTHING;
 
         CosmeticUser viewerUser = CosmeticUsers.getUser(player);
         if (viewerUser == null || viewerUser.isInWardrobe()) return PacketAction.NOTHING;
@@ -147,7 +147,8 @@ public class CosmeticPacketInterface implements PacketInterface {
         if (user.getUserBackpackManager() == null) return PacketAction.NOTHING;
 
         List<Integer> originalPassengers = wrapper.getPassengers();
-        List<Integer> passengers = new ArrayList<>(user.getUserBackpackManager().getFirstArmorStandId());
+        List<Integer> passengers = new ArrayList<>(originalPassengers.size() + 1);
+        passengers.add(user.getUserBackpackManager().getFirstArmorStandId());
         passengers.addAll(originalPassengers);
         wrapper.setPassengers(passengers);
         return PacketAction.CHANGED;
